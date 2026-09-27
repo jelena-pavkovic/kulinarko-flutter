@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/step.dart' as model;
+import '../app.dart';
 
 class StepRow extends StatelessWidget {
   final model.RecipeStep step;
@@ -29,7 +30,7 @@ class StepRow extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: isDone
-                    ? Colors.green
+                    ? kSuccess
                     : Theme.of(context).colorScheme.primary,
               ),
               child: Center(
@@ -52,7 +53,7 @@ class StepRow extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 15,
                   decoration: isDone ? TextDecoration.lineThrough : null,
-                  color: isDone ? Colors.grey : null,
+                  color: isDone ? kMutedText : null,
                 ),
               ),
             ),

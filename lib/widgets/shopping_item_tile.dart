@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../models/shopping_item.dart';
+import '../app.dart';
 
 class ShoppingItemTile extends StatelessWidget {
   final ShoppingItem item;
@@ -22,8 +23,8 @@ class ShoppingItemTile extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: (_) => onDelete(),
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
+            backgroundColor: kDanger,
+            foregroundColor: const Color(0xFF2B1014),
             icon: Icons.delete,
             label: 'Obriši',
           ),
@@ -33,19 +34,19 @@ class ShoppingItemTile extends StatelessWidget {
         leading: Checkbox(
           value: item.isChecked,
           onChanged: (_) => onToggle(),
-          activeColor: Colors.green,
+          activeColor: kSuccess,
         ),
         title: Text(
           item.name,
           style: TextStyle(
             decoration: item.isChecked ? TextDecoration.lineThrough : null,
-            color: item.isChecked ? Colors.grey : null,
+            color: item.isChecked ? kMutedText : null,
           ),
         ),
         trailing: Text(
           '${item.quantity} ${item.unit}',
           style: TextStyle(
-            color: item.isChecked ? Colors.grey : Colors.black87,
+            color: item.isChecked ? kMutedText : kInk,
             fontWeight: FontWeight.w500,
           ),
         ),

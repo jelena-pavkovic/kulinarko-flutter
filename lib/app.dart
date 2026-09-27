@@ -6,12 +6,27 @@ import 'screens/recipe_form_screen.dart';
 import 'screens/shopping_screen.dart';
 import 'screens/settings_screen.dart';
 
-const kTerracotta = Color(0xFFD85A30); // glavna akcentna
+/*const kTerracotta = Color(0xFFD85A30); // glavna akcentna
 const kTerracottaDark = Color(0xFF993C1D);
 const kTerracottaLight = Color(0xFFF0997B); // svetlija, za placeholdere
 const kCream = Color(0xFFFAF3E9); // pozadina svih ekrana
 const kCardBorder = Color(0xFFF5C4B3); // topli okvir kartica i polja
-const kInk = Color(0xFF4A1B0C); // glavni tekst
+const kInk = Color(0xFF4A1B0C); // glavni tekst*/
+
+// Kulinarko dark palette — namerno nije potpuno crna.
+const kTerracotta = Color(0xFF82B1FF);      // glavni plavi akcenat
+const kTerracottaDark = Color(0xFFA9C7FF); // tekst i ikone uz akcenat
+const kTerracottaLight = Color(0xFFB8D2FF); // pomoćni akcenat
+const kCream = Color(0xFF141A22);          // pozadina aplikacije
+const kCardBorder = Color(0xFF34445A);     // diskretan okvir
+const kInk = Color(0xFFE7EEF7);             // glavni tekst
+
+const kSurface = Color(0xFF202A38);        // kartice
+const kSurfaceContainer = Color(0xFF263346); // polja i povišene površine
+const kMutedText = Color(0xFF9CAAC0);      // sekundarni tekst
+const kSuccess = Color(0xFF78C6A3);
+const kWarning = Color(0xFFE7B86A);
+const kDanger = Color(0xFFF08A8A);
 
 final _router = GoRouter(
   initialLocation: '/',
@@ -65,7 +80,7 @@ class KulinarkoApp extends StatelessWidget {
     );
   }
 
-  ThemeData _buildTheme() {
+  /*ThemeData _buildTheme() {
     final base = ThemeData(
       useMaterial3: true,
       scaffoldBackgroundColor: kCream,
@@ -163,7 +178,143 @@ class KulinarkoApp extends StatelessWidget {
       ),
       dividerTheme: const DividerThemeData(color: kCardBorder, thickness: 0.8),
     );
-  }
+  }*/
+
+  ThemeData _buildTheme() {
+  final scheme = ColorScheme.fromSeed(
+    seedColor: kTerracotta,
+    brightness: Brightness.dark,
+  ).copyWith(
+    primary: kTerracotta,
+    onPrimary: Color(0xFF102038),
+    secondary: kTerracottaDark,
+    onSecondary: Color(0xFF102038),
+    surface: kSurface,
+    onSurface: kInk,
+    surfaceContainerHighest: kSurfaceContainer,
+    outline: kCardBorder,
+    error: kDanger,
+    onError: Color(0xFF2B1014),
+  );
+
+  final base = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    colorScheme: scheme,
+    scaffoldBackgroundColor: kCream,
+    canvasColor: kCream,
+    visualDensity: VisualDensity.standard,
+  );
+
+  return base.copyWith(
+    appBarTheme: const AppBarTheme(
+      backgroundColor: kCream,
+      foregroundColor: kInk,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      centerTitle: false,
+      titleTextStyle: TextStyle(
+        color: kInk,
+        fontSize: 22,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+    cardTheme: CardThemeData(
+      color: kSurface,
+      elevation: 0,
+      margin: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: kCardBorder, width: 0.8),
+      ),
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: kSurfaceContainer,
+      selectedColor: kTerracotta.withValues(alpha: 0.22),
+      labelStyle: const TextStyle(color: kInk, fontSize: 13),
+      secondaryLabelStyle: const TextStyle(color: kTerracottaDark),
+      side: const BorderSide(color: kCardBorder, width: 0.8),
+      shape: const StadiumBorder(),
+      showCheckmark: false,
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: kSurface,
+      indicatorColor: kTerracotta.withValues(alpha: 0.18),
+      iconTheme: WidgetStateProperty.resolveWith(
+        (states) => IconThemeData(
+          color: states.contains(WidgetState.selected)
+              ? kTerracotta
+              : kMutedText,
+        ),
+      ),
+      labelTextStyle: WidgetStateProperty.resolveWith(
+        (states) => TextStyle(
+          fontSize: 12,
+          color: states.contains(WidgetState.selected)
+              ? kTerracotta
+              : kMutedText,
+        ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: kSurfaceContainer,
+      hintStyle: const TextStyle(color: kMutedText),
+      prefixIconColor: kTerracottaDark,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: kCardBorder, width: 0.8),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: kCardBorder, width: 0.8),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: kTerracotta, width: 1.5),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: kTerracotta,
+        foregroundColor: const Color(0xFF102038),
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+        ),
+      ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(foregroundColor: kTerracottaDark),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: kTerracotta,
+      foregroundColor: Color(0xFF102038),
+    ),
+    dividerTheme: const DividerThemeData(
+      color: kCardBorder,
+      thickness: 0.8,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: kTerracotta,
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: kSurface,
+      surfaceTintColor: Colors.transparent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: kSurfaceContainer,
+      contentTextStyle: const TextStyle(color: kInk),
+      actionTextColor: kTerracotta,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+  );
+}
 }
 
 class _Shell extends StatelessWidget {

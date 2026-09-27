@@ -14,8 +14,6 @@ class ShoppingNotifier extends AsyncNotifier<List<ShoppingItem>> {
   }
 
   Future<void> toggleItem(int id) async {
-    // Optimistički update — odmah mijenjamo lokalno, pa šaljemo na server
-    //final current = state.valueOrNull ?? [];
     final current = state.value ?? [];
     final item = current.firstWhere((i) => i.id == id);
     final newChecked = !item.isChecked;

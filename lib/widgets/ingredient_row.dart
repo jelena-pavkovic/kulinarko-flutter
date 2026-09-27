@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/recipe_ingredient.dart';
+import '../app.dart';
 
 enum IngredientState { unchecked, haveIt, needToBuy }
 
@@ -41,11 +42,11 @@ class IngredientRow extends StatelessWidget {
   Widget _buildCheckbox() {
     switch (state) {
       case IngredientState.unchecked:
-        return const Icon(Icons.check_box_outline_blank, color: Colors.grey);
+        return const Icon(Icons.check_box_outline_blank, color: kMutedText);
       case IngredientState.haveIt:
-        return const Icon(Icons.check_box, color: Colors.green);
+        return const Icon(Icons.check_box, color: kSuccess);
       case IngredientState.needToBuy:
-        return const Icon(Icons.check_box, color: Colors.red);
+        return const Icon(Icons.check_box, color: kDanger);
     }
   }
 }
