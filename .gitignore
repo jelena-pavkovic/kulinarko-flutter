@@ -45,3 +45,6 @@ lib/generated/
 *.log
 *.tmp
 .DS_Store
+
+# Generated Flutter widget preview
+.widget_preview/
