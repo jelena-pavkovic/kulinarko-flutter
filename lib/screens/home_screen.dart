@@ -46,7 +46,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           _greeting,
                           style: const TextStyle(
                             fontSize: 14,
-                            color: kTerracottaDark,
+                            color: kAccentDark,
                           ),
                         ),
                         const SizedBox(height: 2),
@@ -62,7 +62,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                   ),
                   Material(
-                    color: kTerracotta,
+                    color: kAccent,
                     shape: const CircleBorder(),
                     child: InkWell(
                       customBorder: const CircleBorder(),
@@ -82,7 +82,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: TextField(
                 decoration: const InputDecoration(
                   hintText: 'Pretraži recepte...',
-                  prefixIcon: Icon(Icons.search, color: kTerracottaDark),
+                  prefixIcon: Icon(Icons.search, color: kAccentDark),
                   contentPadding: EdgeInsets.symmetric(vertical: 0),
                 ),
                 onChanged: (value) => setState(() => _searchQuery = value),
@@ -108,7 +108,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.wifi_off, size: 48, color: kTerracottaLight),
+                      Icon(Icons.wifi_off, size: 48, color: kAccentLight),
                       const SizedBox(height: 12),
                       const Text(
                         'Nije moguće učitati recepte.',

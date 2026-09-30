@@ -18,7 +18,7 @@ class RecipeCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(width: 5, color: kTerracotta),
+              Container(width: 5, color: kAccent),
 
               Expanded(
                 child: Padding(
@@ -77,11 +77,11 @@ class _InfoBit extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 13, color: kTerracottaDark),
+        Icon(icon, size: 13, color: kAccentDark),
         const SizedBox(width: 3),
         Text(
           label,
-          style: const TextStyle(fontSize: 12, color: kTerracottaDark),
+          style: const TextStyle(fontSize: 12, color: kAccentDark),
         ),
       ],
     );

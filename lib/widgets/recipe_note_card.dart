@@ -44,7 +44,7 @@ class RecipeNoteCard extends StatelessWidget {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: kTerracotta.withValues(alpha: 0.14),
+                    color: kAccent.withValues(alpha: 0.14),
                     borderRadius: BorderRadius.circular(14),
                   ),
                   alignment: Alignment.center,
